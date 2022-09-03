@@ -17,9 +17,9 @@ const loadCategories = async () => {
 // display catagories data 
 const displayCategories = categories => {
     // console.log(categories);
+    const categoryContainer = document.getElementById('category-container');
+    categoryContainer.innerHTML = " ";
     categories.forEach(category => {
-
-        const categoryContainer = document.getElementById('category-container');
 
         const categoryDiv = document.createElement('div');
 
@@ -36,8 +36,10 @@ const displayCategories = categories => {
 
 // load news part
 const loadNews = async (categoryId) => {
+    // footer part
     const footer = document.getElementById('footer');
     footer.classList.remove('d-none')
+
     // spinner start
     const spinner = document.getElementById('spinner');
     spinner.classList.remove('d-none');
@@ -47,24 +49,31 @@ const loadNews = async (categoryId) => {
     displayNews(data.data);
     // return data.data;
     // stop spinner
-    spinner.classList.add('d-none');
+    // spinner.classList.add('d-none');
 
 
 }
 
 // displaying news
 const displayNews = data => {
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = " ";
 
     // news found part 
     const newsFound = document.getElementById('news-found');
     newsFound.innerHTML = `
               
-              <h3>${data.length} News Found   </h3>
+              <h3>${parseInt(data.length)} News Found   </h3>
        `
-    // const data = await loadNews();
-    // console.log(data);
-    const newsContainer = document.getElementById('news-container');
-    newsContainer.textContent = '';
+    const spinner = document.getElementById('spinner');
+    spinner.classList.add('d-none');
+
+
+    // sorting news by most view 
+    const arr = data.sort((a, b) => {
+        return b.total_view - a.total_view;
+
+    });
 
 
     data.forEach(news => {
@@ -75,6 +84,7 @@ const displayNews = data => {
 
 
         const newsDiv = document.createElement('div')
+
         newsDiv.classList.add('row')
         newsDiv.innerHTML = `
               <div class="col-md-4 py-4">
@@ -85,17 +95,17 @@ const displayNews = data => {
                 <p >${details}  </p>
 
                 <div class="row ">
-                <div class="col-md-4 ">
+                <div class="col-md-4 m-0 p-0">
                 <img class="img-fluid w-50 h-50 rounded-circle" src = "${img}">
                 <h6 class=""> ${name ? name : "N/A"} </h6
                 <h6 class=""> ${published_date} </h6
                 </div> 
                </div>
 
-               <div class="col-md-4 mt-5">
-                <h6>${total_view ? total_view : "N/A"}   </h6>
+               <div class="col-md-4 ">
+                <h6>${total_view ? total_view : "N/A"}  </h6>
                </div>
-               <div class="col-md-4 col-sm-12 mt-5">
+               <div class="col-md-4 col-sm-12 ">
         
                <button onclick="loadDetails('${_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
 
