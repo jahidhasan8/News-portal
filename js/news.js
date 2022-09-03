@@ -18,6 +18,7 @@ const loadCategories = async () => {
 const displayCategories = categories => {
     // console.log(categories);
     categories.forEach(category => {
+
         const categoryContainer = document.getElementById('category-container');
 
         const categoryDiv = document.createElement('div');
@@ -28,6 +29,7 @@ const displayCategories = categories => {
         <button onclick="loadNews('${category.category_id}')" type="button" class="btn btn-primary" data-bs-toggle="button">${category.category_name}</button>
 
         `
+
         categoryContainer.appendChild(categoryDiv);
     });
 }
@@ -53,12 +55,17 @@ const loadNews = async (categoryId) => {
 // displaying news
 const displayNews = data => {
 
-       
+    // news found part 
+    const newsFound = document.getElementById('news-found');
+    newsFound.innerHTML = `
+              
+              <h3>${data.length} News Found   </h3>
+       `
     // const data = await loadNews();
     // console.log(data);
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
-    
+
 
     data.forEach(news => {
         // console.log(news);
@@ -97,7 +104,7 @@ const displayNews = data => {
               
               `
         newsContainer.appendChild(newsDiv);
-       
+
     });
 }
 
