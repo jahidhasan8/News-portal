@@ -45,6 +45,8 @@ const loadNews = async (categoryId, categoryName) => {
     // spinner start
     const spinner = document.getElementById('spinner');
     spinner.classList.remove('d-none');
+    
+    // load news data
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const res = await fetch(url);
     const data = await res.json()
@@ -63,7 +65,6 @@ const loadNews = async (categoryId, categoryName) => {
             ${newsItem} Item found for ${categoryName}
         `
     }
-
 
     displayNews(data.data);
 
@@ -103,7 +104,7 @@ const displayNews = data => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title fw-semibold">${title}</h5>
-        <p class="card-text fs-6">${details}</p>
+        <p class="card-text">${details}</p>
         <img class="img-fluid px-3 w-25 h-25 rounded-circle mb-3" src = "${img}">
         <h5 class="d-inline p-3"><i class="fa-solid fa-eye"></i> ${total_view ? total_view : "N/A"}  </h5>
 
@@ -148,7 +149,7 @@ const displayDetails = news => {
       <p>${details}</p>
       <img class="w-25 h-25 rounded-circle" src="${img ? img : "N/A"}">
       <h5 class="d-inline">${name ? name : "N/A"}</h5>
-      <h5 class="d-inline ms-5">${total_view ? total_view : "N/A"}</h5>
+      <h5 class="d-inline ms-5"><i class="fa-solid fa-eye"></i>${total_view ? total_view : "N/A"}</h5>
       <h6>Rating : ${number ? number : "N/A"}</h6>
       <h6>Badge: ${badge ? badge : "N/A"}</h6>
     
