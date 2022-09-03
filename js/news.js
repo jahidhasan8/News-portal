@@ -16,7 +16,7 @@ const loadCategories = async () => {
 
 // display catagories data 
 const displayCategories = categories => {
-    // console.log(categories);
+
     const categoryContainer = document.getElementById('category-container');
     categoryContainer.innerHTML = " ";
     categories.forEach(category => {
@@ -47,9 +47,6 @@ const loadNews = async (categoryId) => {
     const res = await fetch(url);
     const data = await res.json()
     displayNews(data.data);
-    // return data.data;
-    // stop spinner
-    // spinner.classList.add('d-none');
 
 
 }
@@ -65,6 +62,7 @@ const displayNews = data => {
               
               <h3>${parseInt(data.length)} News Found   </h3>
        `
+    //    stop spinner
     const spinner = document.getElementById('spinner');
     spinner.classList.add('d-none');
 
@@ -85,34 +83,29 @@ const displayNews = data => {
 
         const newsDiv = document.createElement('div')
 
-        newsDiv.classList.add('row')
         newsDiv.innerHTML = `
-              <div class="col-md-4 py-4">
-                <img src ="${thumbnail_url}">
-              </div>
-              <div class="col-md-8 ">
-                <h4>${title}</h4>
-                <p >${details}  </p>
+        <div class="card mb-3 w-100 " >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="${thumbnail_url}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${title}</h5>
+        <p class="card-text fs-6">${details}</p>
+        <img class="img-fluid px-3 w-25 h-25 rounded-circle" src = "${img}">
+        <h5 class="d-inline px-5">${total_view ? total_view : "N/A"}  </h5>
 
-                <div class="row ">
-                <div class="col-md-4 m-0 p-0">
-                <img class="img-fluid w-50 h-50 rounded-circle" src = "${img}">
-                <h6 class=""> ${name ? name : "N/A"} </h6
-                <h6 class=""> ${published_date} </h6
-                </div> 
-               </div>
+        <button onclick="loadDetails('${_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
 
-               <div class="col-md-4 ">
-                <h6>${total_view ? total_view : "N/A"}  </h6>
-               </div>
-               <div class="col-md-4 col-sm-12 ">
-        
-               <button onclick="loadDetails('${_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
+        <h6 class="px-5"> ${name ? name : "N/A"} </h6
+        <h6 class="px-5"> ${published_date} </h6
+      </div>
+      
+        </div>
+      </div>
+      </div>`
 
-               </div>
-              </div>
-              
-              `
         newsContainer.appendChild(newsDiv);
 
     });
