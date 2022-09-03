@@ -1,0 +1,15 @@
+/* google font  */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+
+}

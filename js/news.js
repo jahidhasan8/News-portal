@@ -60,7 +60,7 @@ const displayNews = data => {
     const newsFound = document.getElementById('news-found');
     newsFound.innerHTML = `
               
-              <h3>${parseInt(data.length)} News Found   </h3>
+    <h3 class="mb-4 mt-4">${parseInt(data.length)} News Found   </h3>
        `
     //    stop spinner
     const spinner = document.getElementById('spinner');
@@ -76,10 +76,8 @@ const displayNews = data => {
 
     data.forEach(news => {
         // console.log(news);
-        const { thumbnail_url, title, details, author, rating, total_view, image_url, _id } = news;
+        const { thumbnail_url, title, details, author, total_view, image_url, _id } = news;
         const { img, name, published_date } = author;
-        const { number, badge } = rating;
-
 
         const newsDiv = document.createElement('div')
 
@@ -94,7 +92,7 @@ const displayNews = data => {
         <h5 class="card-title">${title}</h5>
         <p class="card-text fs-6">${details}</p>
         <img class="img-fluid px-3 w-25 h-25 rounded-circle" src = "${img}">
-        <h5 class="d-inline px-5">${total_view ? total_view : "N/A"}  </h5>
+        <h5 class="d-inline px-5"><i class="fa-solid fa-eye"></i> ${total_view ? total_view : "N/A"}  </h5>
 
         <button onclick="loadDetails('${_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
 
@@ -110,7 +108,6 @@ const displayNews = data => {
 
     });
 }
-
 
 
 // load news details
@@ -139,8 +136,8 @@ const displayDetails = news => {
       <img class="w-25 h-25 rounded-circle" src="${img ? img : "N/A"}">
       <h5 class="d-inline">${name ? name : "N/A"}</h5>
       <h5 class="d-inline ms-5">${total_view ? total_view : "N/A"}</h5>
-      <h5>Rating : ${number ? number : "N/A"}</h5>
-      <h5>Badge: ${badge ? badge : "N/A"}</h5>
+      <h6>Rating : ${number ? number : "N/A"}</h6>
+      <h6>Badge: ${badge ? badge : "N/A"}</h6>
     
     `
 
