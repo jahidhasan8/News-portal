@@ -34,6 +34,8 @@ const displayCategories = categories => {
 
 // load news part
 const loadNews = async (categoryId) => {
+    const footer = document.getElementById('footer');
+    footer.classList.remove('d-none')
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const res = await fetch(url);
     const data = await res.json()
