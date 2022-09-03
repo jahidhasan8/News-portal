@@ -44,7 +44,7 @@ const loadNews = async (categoryId) => {
 const displayNews = data => {
 
     const newsContainer = document.getElementById('news-container');
-    newsContainer.textContent='';
+    newsContainer.textContent = '';
 
     data.forEach(news => {
         console.log(news);
@@ -75,7 +75,8 @@ const displayNews = data => {
                 <h6>${total_view ? total_view : "N/A"}   </h6>
                </div>
                <div class="col-md-3 mt-5">
-               <button type="button" class="btn btn-primary">Details</button>
+        
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
 
                </div>
               </div>
