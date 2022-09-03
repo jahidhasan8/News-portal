@@ -97,26 +97,26 @@ const displayNews = data => {
 
 
 // load news details
-const loadDetails = async id =>{
-    const url=`https://openapi.programming-hero.com/api/news/${id}`
+const loadDetails = async id => {
+    const url = `https://openapi.programming-hero.com/api/news/${id}`
     const res = await fetch(url);
     const data = await res.json();
     displayDetails(data.data[0])
 }
 
 // show details on modal 
-const displayDetails = news =>{
+const displayDetails = news => {
     const { title, details, author, rating, total_view, image_url, _id } = news;
     const { img, name, published_date } = author;
     const { number, badge } = rating;
 
     const modalTitle = document.getElementById('newsDetailsModalLabel');
     const newsDetails = document.getElementById('news-details');
-    newsDetails.textContent='';
+    newsDetails.textContent = '';
 
-    modalTitle.innerText =title;
+    modalTitle.innerText = title;
 
-    newsDetails.innerHTML=`
+    newsDetails.innerHTML = `
       <img class="w-75 h-75" src="${image_url}">
       <p>${details}</p>
       <img class="w-25 h-25 rounded-circle" src="${img ? img : "N/A"}">

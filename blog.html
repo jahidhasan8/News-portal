@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asian News</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="container">
+        <!--....................................... 
+                         navbar part
+         ......................................... -->
+        <nav class="navbar navbar-expand-lg bg-light ">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-2 fw-bold text-primary" href="#">Asian News</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse fs-5 fw-bold" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active text-primary" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link text-primary" href="blog.html">Blog</a>
+
+                    </div>
+                </div>
+                <div class="  rounded-circle">
+                    <img src="https://placeimg.com/80/80/people" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Blog questions -->
+        <div class="container mt-5">
+            <div class="card-header ">
+                <h1>1.Differences between var, let, and const</h1>
+            </div>
+            <div class="card-body border rounded px-3">
+                <h3 class="card-title">Var</h3>
+                <ul class="card-text fs-5 pt-2">
+                    <li>can be declared outside any function to be used inside any function</li>
+                    <li>can be declared inside any function or any other {} which are of only if or if-else or switch
+                        etc. and can be used anywhere inside the function
+                    </li>
+                    <li>can be changed again and again anywhere</li>
+                </ul>
+
+            </div>
+            <div class="card-body border rounded px-3 mt-4">
+                <h3 class="card-title">Let</h3>
+                <ul class="card-text fs-5 pt-2">
+                    <li>can be declared outside any function to be used inside any function </li>
+                    <li>if declared inside any function or any other {} which are of only if or if-else or switch
+                        etc.and can't be used anywhere inside the function and can be only used inside statement</li>
+                    <li>can be changed again and again only inside the statement in which they are made in</li>
+                </ul>
+
+            </div>
+            <div class="card-body border rounded px-3 mt-4">
+                <h3 class="card-title">Constant</h3>
+                <ul class="card-text fs-5 pt-2">
+                    <li>can be declared outside any function to be used inside any function</li>
+                    <li>can be declared inside any function or any other {} which are of only if or if-else or switch
+                        etc. and can be used anywhere inside the function</li>
+                    <li>cannot be changed again and agan anywhere, if tried to, will result in an error</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="card-header ">
+                <h1>2.Difference Between Regular Functions and Arrow Functions</h1>
+            </div>
+            <div class="card-body border rounded px-3">
+                <p class="card-text fs-5">Regular functions created using function declarations or expressions are
+                    constructible and callable. Since regular functions are constructible, they can be called using the
+                    new keyword. However, the arrow functions are only callable and not constructible, i.e arrow
+                    functions can never be used as constructor functions.</p>
+                    <h3 class="card-title">Five main deference Between Regular Functions and Arrow Functions</h3>
+                    <ul class="fs-5 mt-4 ">
+                        <li>Syntax</li>
+                        <li>Arguments binding</li>
+                        <li>Use of this keyword</li>
+                        <li>Using new keyword</li>
+                        <li>No duplicate named parameters</li>
+                    </ul>
+            </div>
+
+            <h1 class="mt-5">3.Difference of .forEach(), .map(), .filter(), .find()</h1>
+            <div class="card-body border rounded px-3 mt-4 mb-4">
+               
+                <h3 class=" mt-5">.forEach()</h3>
+                <p class="fs-5">.forEach(), is used to execute the same code on every element in an array but does not change the
+                    array and it returns undefined.</p>
+                <h3 class="card-title">.map()</h3>
+                <p class="fs-5">.map() executes the same code on every element in an array and returns a new array with the updated
+                    elements</p>
+                <h3 class="card-title">.filter()</h3>
+                <p class="fs-5">.filter() checks every element in an array to see if it meets a certain criteria and returns a new
+                    array with the elements that return truthy for the criteria.</p>
+                <h3 class="card-title">.find()</h3>
+                <p class="fs-5">.find() When you want to select a single element from an array.</p>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
