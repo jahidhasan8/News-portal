@@ -14,6 +14,8 @@ const loadCategories = async () => {
 
 }
 
+loadCategories();
+
 // display catagories data 
 const displayCategories = categories => {
 
@@ -26,7 +28,7 @@ const displayCategories = categories => {
         categoryDiv.classList.add('d-inline');
 
         categoryDiv.innerHTML = `
-        <button onclick="loadNews('${category.category_id}')" type="button" class="btn btn-primary" data-bs-toggle="button">${category.category_name}</button>
+        <button onclick="loadNews('${category.category_id}','${category.category_name}')" type="button" class="btn btn-primary" data-bs-toggle="button">${category.category_name}</button>
 
         `
 
@@ -35,7 +37,7 @@ const displayCategories = categories => {
 }
 
 // load news part
-const loadNews = async (categoryId) => {
+const loadNews = async (categoryId, categoryName) => {
     // footer part
     const footer = document.getElementById('footer');
     footer.classList.remove('d-none')
@@ -46,8 +48,24 @@ const loadNews = async (categoryId) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const res = await fetch(url);
     const data = await res.json()
-    displayNews(data.data);
 
+    // news found part 
+    const newsItem = parseInt(data.data.length)
+    const newsFound = document.getElementById('news-found');
+    newsFound.textContent='';
+    if (newsItem !== 0) {
+        newsFound.innerHTML = `
+           ${newsItem} Item found for ${categoryName} 
+        `
+    }
+    else {
+        newsFound.innerHTML = `
+            ${newsItem} Item found for ${categoryName}
+        `
+    }
+
+
+    displayNews(data.data);
 
 }
 
@@ -56,12 +74,7 @@ const displayNews = data => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = " ";
 
-    // news found part 
-    const newsFound = document.getElementById('news-found');
-    newsFound.innerHTML = `
-              
-    <h3 class="mb-4 mt-4">${parseInt(data.length)} News Found   </h3>
-       `
+   
     //    stop spinner
     const spinner = document.getElementById('spinner');
     spinner.classList.add('d-none');
@@ -89,14 +102,14 @@ const displayNews = data => {
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">${title}</h5>
+        <h5 class="card-title fw-semibold">${title}</h5>
         <p class="card-text fs-6">${details}</p>
-        <img class="img-fluid px-3 w-25 h-25 rounded-circle" src = "${img}">
-        <h5 class="d-inline px-5"><i class="fa-solid fa-eye"></i> ${total_view ? total_view : "N/A"}  </h5>
+        <img class="img-fluid px-3 w-25 h-25 rounded-circle mb-3" src = "${img}">
+        <h5 class="d-inline p-3"><i class="fa-solid fa-eye"></i> ${total_view ? total_view : "N/A"}  </h5>
 
-        <button onclick="loadDetails('${_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
+        <button onclick="loadDetails('${_id}')" type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button>
 
-        <h6 class="px-5"> ${name ? name : "N/A"} </h6
+        <h6 class=" px-5"> ${name ? name : "N/A"} </h6
         <h6 class="px-5"> ${published_date} </h6
       </div>
       
@@ -143,5 +156,3 @@ const displayDetails = news => {
 
 }
 
-
-loadCategories();
