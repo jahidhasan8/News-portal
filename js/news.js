@@ -74,7 +74,10 @@ const loadNews = async (categoryId, categoryName) => {
 const displayNews = data => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = " ";
-
+     
+     //    stop spinner
+     const spinner = document.getElementById('spinner');
+     spinner.classList.add('d-none');
 
     // sorting news by most view 
     const arr = data.sort((a, b) => {
@@ -114,10 +117,6 @@ const displayNews = data => {
       </div>`
 
         newsContainer.appendChild(newsDiv);
-
-        //    stop spinner
-        const spinner = document.getElementById('spinner');
-        spinner.classList.add('d-none');
 
     });
 }
